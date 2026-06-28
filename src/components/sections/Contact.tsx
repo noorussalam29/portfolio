@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
-import { Mail, MapPin, Send, MessageSquare, Check, Phone } from "lucide-react";
+import { Mail, MapPin, Send, Check, Phone } from "lucide-react";
 import { Github, Linkedin } from "@/components/ui/Icons";
 
 interface FormState {
@@ -46,184 +46,188 @@ export default function Contact() {
     if (!validate()) return;
 
     setIsSubmitting(true);
-
-    // Simulate backend submission delay
     await new Promise((resolve) => setTimeout(resolve, 1500));
-
     setIsSubmitting(false);
     setSubmitSuccess(true);
     setFormData({ name: "", email: "", message: "" });
 
-    // Trigger canvas confetti celebration
     confetti({
-      particleCount: 150,
-      spread: 80,
+      particleCount: 100,
+      spread: 70,
       origin: { y: 0.6 },
       colors: ["#6366f1", "#8b5cf6", "#10b981"],
     });
 
-    // Reset success banner after 5 seconds
     setTimeout(() => setSubmitSuccess(false), 5000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear validation error when editing
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
   };
 
-  return (
-    <section 
-      id="contact" 
-      className="relative py-24 bg-white dark:bg-dark-bg transition-all duration-300 overflow-hidden"
-    >
-      {/* Background radial glow */}
-      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 w-[550px] h-[550px] bg-radial-glow-violet rounded-full pointer-events-none opacity-45" />
+  const inputClass = (hasError: boolean) =>
+    `w-full px-4 py-3 rounded-lg bg-white dark:bg-neutral-950 border text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 transition-colors ${
+      hasError
+        ? "border-red-400 focus:ring-red-300/30"
+        : "border-neutral-200 dark:border-neutral-800 focus:border-indigo-500 focus:ring-indigo-500/20"
+    }`;
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+  return (
+    <section
+      id="contact"
+      className="relative py-24 bg-white dark:bg-dark-bg"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5 }}
-            className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-3"
+        <div className="max-w-2xl mb-12">
+          <motion.span
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="inline-block text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-3"
           >
             Get In Touch
-          </motion.h2>
-          <motion.h3 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.05 }}
             className="text-3xl sm:text-4xl font-bold text-neutral-900 dark:text-white"
           >
-            Let's Collaborate On Your Next Project
-          </motion.h3>
+            Let&apos;s work together
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="mt-3 text-sm text-neutral-500 dark:text-neutral-400"
+          >
+            Have a project in mind or a position to fill? Drop me a message and I&apos;ll get back to you within 24 hours.
+          </motion.p>
         </div>
 
-        {/* Content Layout Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
+        {/* Content Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+
           {/* Left Column: Contact details */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="space-y-4">
-              <h4 className="text-xl font-bold text-neutral-800 dark:text-white">
-                Contact Information
-              </h4>
-              <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
-                Have an exciting project idea, a position to fill, or simply want to chat? Drop me a message, and I'll get back to you within 24 hours.
-              </p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="lg:col-span-4 space-y-4"
+          >
+            {/* Mail */}
+            <div className="flex items-center gap-4 p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900">
+              <div className="w-9 h-9 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
+                <Mail size={17} />
+              </div>
+              <div>
+                <span className="block text-[10px] font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">Email</span>
+                <a href="mailto:noorussalam.dev@example.com" className="text-sm font-medium text-neutral-800 dark:text-white hover:underline">
+                  noorussalam.dev@example.com
+                </a>
+              </div>
             </div>
 
-            {/* Info cards */}
-            <div className="space-y-4">
-              
-              {/* Mail Card */}
-              <div className="flex items-center gap-4 p-5 rounded-2xl glass-card border border-neutral-200/50 dark:border-neutral-800">
-                <div className="w-10 h-10 rounded-xl bg-indigo-500/10 dark:bg-indigo-400/10 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
-                  <Mail size={18} />
-                </div>
-                <div>
-                  <span className="block text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">Email Me</span>
-                  <a href="mailto:noorussalam.dev@example.com" className="text-sm font-semibold text-neutral-800 dark:text-white hover:underline">
-                    noorussalam.dev@example.com
-                  </a>
-                </div>
+            {/* Phone */}
+            <div className="flex items-center gap-4 p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900">
+              <div className="w-9 h-9 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
+                <Phone size={17} />
               </div>
-
-              {/* Phone Card */}
-              <div className="flex items-center gap-4 p-5 rounded-2xl glass-card border border-neutral-200/50 dark:border-neutral-800">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 dark:bg-emerald-400/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
-                  <Phone size={18} />
-                </div>
-                <div>
-                  <span className="block text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">Call Me</span>
-                  <a href="tel:+919999999999" className="text-sm font-semibold text-neutral-800 dark:text-white hover:underline">
-                    +91 99999 99999
-                  </a>
-                </div>
+              <div>
+                <span className="block text-[10px] font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">Phone</span>
+                <a href="tel:+919999999999" className="text-sm font-medium text-neutral-800 dark:text-white hover:underline">
+                  +91 99999 99999
+                </a>
               </div>
-
-              {/* Location Card */}
-              <div className="flex items-center gap-4 p-5 rounded-2xl glass-card border border-neutral-200/50 dark:border-neutral-800">
-                <div className="w-10 h-10 rounded-xl bg-violet-500/10 dark:bg-violet-400/10 flex items-center justify-center text-violet-600 dark:text-violet-400 shrink-0">
-                  <MapPin size={18} />
-                </div>
-                <div>
-                  <span className="block text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">Location</span>
-                  <span className="text-sm font-semibold text-neutral-800 dark:text-white">
-                    Ramanathapuram, Tamil Nadu, India
-                  </span>
-                </div>
-              </div>
-
             </div>
 
-            {/* Social profiles connections */}
-            <div className="space-y-4 pt-4">
-              <h5 className="text-xs font-bold text-neutral-400 uppercase tracking-wider">Social Channels</h5>
-              <div className="flex gap-4">
+            {/* Location */}
+            <div className="flex items-center gap-4 p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900">
+              <div className="w-9 h-9 rounded-lg bg-violet-50 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 shrink-0">
+                <MapPin size={17} />
+              </div>
+              <div>
+                <span className="block text-[10px] font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">Location</span>
+                <span className="text-sm font-medium text-neutral-800 dark:text-white">
+                  Ramanathapuram, Tamil Nadu, India
+                </span>
+              </div>
+            </div>
+
+            {/* Social */}
+            <div className="pt-2">
+              <p className="text-[10px] font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider mb-3">Social</p>
+              <div className="flex gap-3">
                 <a
                   href="https://linkedin.com/in/mohamed-noorus-salam-mock"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-850 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors text-sm font-semibold text-neutral-600 dark:text-neutral-300"
+                  className="flex items-center gap-2 px-3.5 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors text-sm font-medium text-neutral-600 dark:text-neutral-300"
                 >
-                  <Linkedin size={16} />
+                  <Linkedin size={15} />
                   LinkedIn
                 </a>
                 <a
                   href="https://github.com/noorussalam29"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-850 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors text-sm font-semibold text-neutral-600 dark:text-neutral-300"
+                  className="flex items-center gap-2 px-3.5 py-2 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors text-sm font-medium text-neutral-600 dark:text-neutral-300"
                 >
-                  <Github size={16} />
+                  <Github size={15} />
                   GitHub
                 </a>
               </div>
             </div>
-
-          </div>
+          </motion.div>
 
           {/* Right Column: Contact form */}
-          <div className="lg:col-span-7 w-full">
-            <div className="p-8 rounded-3xl glass-card relative overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.15 }}
+            className="lg:col-span-8 w-full"
+          >
+            <div className="p-7 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900">
               <AnimatePresence mode="wait">
                 {submitSuccess ? (
                   <motion.div
                     key="success"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     className="flex flex-col items-center justify-center py-12 text-center"
                   >
-                    <div className="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500 mb-6 border border-emerald-500/20">
-                      <Check size={32} />
+                    <div className="w-14 h-14 rounded-full bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-500 mb-4 border border-emerald-200 dark:border-emerald-800">
+                      <Check size={28} />
                     </div>
-                    <h5 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">
-                      Message Sent Successfully!
-                    </h5>
-                    <p className="text-sm text-neutral-500 dark:text-neutral-400 max-w-sm">
-                      Thank you for reaching out. I have received your email and will be in touch shortly!
+                    <h4 className="text-xl font-semibold text-neutral-900 dark:text-white mb-1">
+                      Message sent!
+                    </h4>
+                    <p className="text-sm text-neutral-500 dark:text-neutral-400 max-w-xs">
+                      Thanks for reaching out. I&apos;ll be in touch shortly.
                     </p>
                   </motion.div>
                 ) : (
                   <motion.form
                     key="form"
                     onSubmit={handleSubmit}
-                    className="space-y-6"
+                    className="space-y-5"
                     noValidate
                   >
-                    {/* Name Input */}
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="block text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
+                    {/* Name */}
+                    <div className="space-y-1.5">
+                      <label htmlFor="name" className="block text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
                         Name
                       </label>
                       <input
@@ -232,22 +236,18 @@ export default function Contact() {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className={`w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-950 border text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 transition-all ${
-                          errors.name
-                            ? "border-red-500 focus:ring-red-500/20"
-                            : "border-neutral-200 dark:border-neutral-800 focus:border-indigo-500 focus:ring-indigo-500/20"
-                        }`}
+                        className={inputClass(!!errors.name)}
                         placeholder="John Doe"
                       />
                       {errors.name && (
-                        <p className="text-xs text-red-500 font-semibold">{errors.name}</p>
+                        <p className="text-xs text-red-500">{errors.name}</p>
                       )}
                     </div>
 
-                    {/* Email Input */}
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="block text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
-                        Email Address
+                    {/* Email */}
+                    <div className="space-y-1.5">
+                      <label htmlFor="email" className="block text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
+                        Email
                       </label>
                       <input
                         id="email"
@@ -255,21 +255,17 @@ export default function Contact() {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className={`w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-950 border text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 transition-all ${
-                          errors.email
-                            ? "border-red-500 focus:ring-red-500/20"
-                            : "border-neutral-200 dark:border-neutral-800 focus:border-indigo-500 focus:ring-indigo-500/20"
-                        }`}
+                        className={inputClass(!!errors.email)}
                         placeholder="john@example.com"
                       />
                       {errors.email && (
-                        <p className="text-xs text-red-500 font-semibold">{errors.email}</p>
+                        <p className="text-xs text-red-500">{errors.email}</p>
                       )}
                     </div>
 
-                    {/* Message TextArea */}
-                    <div className="space-y-2">
-                      <label htmlFor="message" className="block text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
+                    {/* Message */}
+                    <div className="space-y-1.5">
+                      <label htmlFor="message" className="block text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
                         Message
                       </label>
                       <textarea
@@ -278,32 +274,28 @@ export default function Contact() {
                         value={formData.message}
                         onChange={handleChange}
                         rows={5}
-                        className={`w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-neutral-950 border text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 transition-all ${
-                          errors.message
-                            ? "border-red-500 focus:ring-red-500/20"
-                            : "border-neutral-200 dark:border-neutral-800 focus:border-indigo-500 focus:ring-indigo-500/20"
-                        }`}
-                        placeholder="Hi Mohamed, I'd love to work with you on..."
+                        className={inputClass(!!errors.message)}
+                        placeholder="Hi Noorus, I'd love to work with you on..."
                       />
                       {errors.message && (
-                        <p className="text-xs text-red-500 font-semibold">{errors.message}</p>
+                        <p className="text-xs text-red-500">{errors.message}</p>
                       )}
                     </div>
 
-                    {/* Submit Button */}
+                    {/* Submit */}
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-semibold text-sm hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-50 disabled:pointer-events-none shadow-md shadow-indigo-500/5 cursor-pointer"
+                      className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-semibold text-sm hover:bg-neutral-700 dark:hover:bg-neutral-200 transition-colors disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
                     >
                       {isSubmitting ? (
                         <>
-                          <div className="w-4 h-4 border-2 border-neutral-400 border-t-indigo-600 rounded-full animate-spin" />
-                          Sending Message...
+                          <div className="w-3.5 h-3.5 border-2 border-neutral-400 border-t-white dark:border-t-neutral-900 rounded-full animate-spin" />
+                          Sending...
                         </>
                       ) : (
                         <>
-                          <Send size={15} />
+                          <Send size={14} />
                           Send Message
                         </>
                       )}
@@ -312,7 +304,7 @@ export default function Contact() {
                 )}
               </AnimatePresence>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>
