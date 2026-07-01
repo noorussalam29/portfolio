@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
@@ -11,10 +10,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <>
-      {/* Floating Header */}
       <Navbar />
-      
-      {/* Scrollable Layout sections */}
       <main className="flex-grow">
         <Hero />
         <About />
@@ -23,8 +19,6 @@ export default function Home() {
         <Experience />
         <Contact />
       </main>
-
-      {/* Footer */}
       <Footer />
     </>
   );

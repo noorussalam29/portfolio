@@ -1,139 +1,79 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
-import {
-  GraduationCap,
-  Languages,
-  Heart,
-  CheckCircle2,
-  Briefcase,
-} from "lucide-react";
+import { GraduationCap, Sparkles } from "lucide-react";
+import SectionHeading from "@/components/ui/SectionHeading";
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0 },
-  whileInView: { opacity: 1 },
-  viewport: { once: true },
-  transition: { duration: 0.4, delay },
-});
+const facts = [
+  { label: "Languages", value: "Tamil (Native) | English (Conversational)" },
+  { label: "Education", value: "BCA (2024)" },
+  { label: "Location", value: "Ramanathapuram, Tamil Nadu" },
+];
+
+const education = [
+  {
+    title: "Bachelor of Computer Applications (BCA)",
+    organization: "Syed Ammal Arts and Science College",
+    period: "2021 — 2024",
+    location: "Ramanathapuram, Tamil Nadu",
+  },
+  {
+    title: "Higher Secondary Certificate (HSC)",
+    organization: "Raja Matriculation Higher Secondary School",
+    period: "2019 — 2021",
+    location: "Ramanathapuram",
+  },
+];
 
 export default function About() {
-  const interests = [
-    "Modern Web Technologies",
-    "Frontend Application Development",
-    "Building Responsive Web Applications",
-    "Learning New Technologies",
-    "Exploring New Frameworks & Tools",
-  ];
-
   return (
-    <section
-      id="about"
-      className="relative py-24 bg-white dark:bg-dark-bg"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="bg-white py-24 dark:bg-[#030712]">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          eyebrow="Professional Summary"
+          title="Frontend Developer with a BCA degree and production project delivery."
+          description="Frontend Developer with a BCA degree (2024) and hands-on experience building and deploying production-ready frontend solutions. Proficient in React.js, Next.js, TypeScript, and Tailwind CSS. Successfully delivered a live corporate website for a Dubai-based client, implementing secure API integration and automated email workflows. Seeking to contribute to a collaborative engineering team while building modern, scalable, and user-focused frontend applications."
+        />
 
-        {/* Header */}
-        <div className="max-w-2xl mb-14">
-          <motion.span {...fadeUp(0)} className="inline-block text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-3">
-            About Me
-          </motion.span>
-          <motion.h2
-            {...fadeUp(0.05)}
-            className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white"
+        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
+            className="rounded-[2rem] border border-[#E5E7EB] bg-[#FAFAFA] p-7 shadow-sm dark:border-[#1F2937] dark:bg-[#0F172A]"
           >
-            Frontend Developer focused on clean, fast interfaces
-          </motion.h2>
-          <motion.p
-            {...fadeUp(0.1)}
-            className="mt-4 text-neutral-500 dark:text-neutral-400 leading-relaxed"
-          >
-            I completed my BCA in 2024 and have built production-ready web
-            applications using React.js, Next.js, TypeScript, and Tailwind CSS.
-            I care about writing clean code and shipping work that performs well.
-          </motion.p>
-        </div>
-
-        {/* Main Grid */}
-        <div className="grid lg:grid-cols-2 gap-8 xl:gap-12">
-          {/* Left */}
-          <motion.div {...fadeUp(0.1)} className="space-y-5">
-
-            {/* Education */}
-            <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 p-6 bg-white dark:bg-neutral-900">
-              <div className="flex items-center gap-3 mb-3">
-                <GraduationCap size={20} className="text-indigo-600 dark:text-indigo-400" />
-                <h3 className="text-base font-semibold text-neutral-900 dark:text-white">
-                  Education & Background
-                </h3>
-              </div>
-              <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                Bachelor of Computer Applications (BCA), 2024. Specialized in
-                web programming and frontend technology stacks. Gained hands-on
-                experience building professional applications with modern tools.
-              </p>
+            <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.24em] text-[#2563EB]">
+              <Sparkles size={14} />
+              Quick facts
             </div>
-
-            {/* Career Objective */}
-            <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 p-6 bg-white dark:bg-neutral-900">
-              <div className="flex items-center gap-3 mb-3">
-                <Briefcase size={20} className="text-indigo-600 dark:text-indigo-400" />
-                <h3 className="text-base font-semibold text-neutral-900 dark:text-white">
-                  Career Objective
-                </h3>
-              </div>
-              <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                Seeking a Frontend Developer role where I can contribute my
-                React.js, Next.js, and TypeScript skills while continuing to grow
-                and deliver impactful user experiences.
-              </p>
-            </div>
+            <ul className="mt-5 space-y-3 text-sm leading-7 text-[#6B7280]">
+              {facts.map((fact) => (
+                <li key={fact.label} className="flex gap-3">
+                  <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#2563EB]" />
+                  <div>
+                    <p className="font-semibold text-[#111827] dark:text-[#F9FAFB]">{fact.label}</p>
+                    <p>{fact.value}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </motion.div>
 
-          {/* Right */}
-          <motion.div {...fadeUp(0.15)} className="space-y-5">
-
-            {/* Languages */}
-            <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 p-6 bg-white dark:bg-neutral-900">
-              <div className="flex items-center gap-3 mb-4">
-                <Languages size={20} className="text-indigo-600 dark:text-indigo-400" />
-                <h3 className="text-base font-semibold text-neutral-900 dark:text-white">
-                  Languages
-                </h3>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.45, delay: 0.06, ease: "easeOut" }}
+            className="space-y-4"
+          >
+            {education.map((item) => (
+              <div key={item.title} className="rounded-[1.5rem] border border-[#E5E7EB] bg-white p-5 dark:border-[#1F2937] dark:bg-[#0F172A]">
+                <p className="text-sm font-semibold text-[#111827] dark:text-[#F9FAFB]">{item.title}</p>
+                <p className="mt-2 text-sm leading-7 text-[#6B7280]">{item.organization}</p>
+                <p className="mt-1 text-sm text-[#6B7280]">{item.period} · {item.location}</p>
               </div>
-              <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-neutral-600 dark:text-neutral-400">
-                <span>
-                  <span className="font-medium text-neutral-800 dark:text-neutral-200">Tamil</span>{" "}
-                  — Native
-                </span>
-                <span className="text-neutral-300 dark:text-neutral-700 select-none">|</span>
-                <span>
-                  <span className="font-medium text-neutral-800 dark:text-neutral-200">English</span>{" "}
-                  — Conversational
-                </span>
-              </div>
-            </div>
-
-            {/* Interests */}
-            <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 p-6 bg-white dark:bg-neutral-900">
-              <div className="flex items-center gap-3 mb-4">
-                <Heart size={20} className="text-indigo-600 dark:text-indigo-400" />
-                <h3 className="text-base font-semibold text-neutral-900 dark:text-white">
-                  Interests
-                </h3>
-              </div>
-              <div className="space-y-2.5">
-                {interests.map((interest) => (
-                  <div
-                    key={interest}
-                    className="flex items-start gap-2 text-sm text-neutral-600 dark:text-neutral-400"
-                  >
-                    <CheckCircle2 size={15} className="text-indigo-500 mt-0.5 shrink-0" />
-                    <span>{interest}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            ))}
           </motion.div>
         </div>
       </div>

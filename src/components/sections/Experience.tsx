@@ -1,149 +1,134 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
-import { Briefcase, Award, GraduationCap, BookOpen } from "lucide-react";
+import { Briefcase, GraduationCap, Layers3, Sparkles } from "lucide-react";
+import SectionHeading from "@/components/ui/SectionHeading";
 
-interface TimelineItem {
-  role: string;
-  company: string;
-  duration: string;
-  description: string[];
-  icon: React.ReactNode;
-}
-
-const experienceData: TimelineItem[] = [
+const experience = [
   {
-    role: "Frontend Developer (Project)",
-    company: "Active Dynamic Cleaning Services (ADCS)",
-    duration: "2026",
-    description: [
-      "Built a fully responsive corporate website using Next.js, React.js, TypeScript, and Tailwind CSS.",
-      "Designed and integrated a secure contact/booking API with input validation and HTML-escaping to prevent scripting attacks.",
-      "Automated dual-email notifications for both client and administration via Resend API integration.",
-      "Hosted and deployed code using Cloudflare Pages, maintaining robust version control workflows via Git/GitHub.",
+    title: "ADCS – Active Dynamic Cleaning Services",
+    company: "Corporate Website",
+    period: "2026",
+    summary: "Delivered a real client-facing website with strong frontend execution, security, and performance.",
+    achievements: [
+      "Designed and developed a production-ready corporate website for a Dubai-based cleaning services company.",
+      "Built a secure server-side contact and booking API with strict input validation and HTML escaping.",
+      "Implemented automated dual-email notifications using Resend API for customer and admin workflows.",
+      "Managed version control, deployment, and DNS configuration on Cloudflare.",
     ],
+    stack: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Resend API", "Cloudflare"],
     icon: <Briefcase size={15} />,
   },
+];
+
+const education = [
   {
-    role: "Bachelor of Computer Applications (B.C.A.)",
-    company: "Syed Ammal Arts And Science College",
-    duration: "2021 – 2024",
-    description: [
-      "Completed degree program focusing on software concepts, databases, and programming fundamentals.",
-      "Specialized in web programming and frontend technology stacks (React, JavaScript, CSS).",
-      "Created functional client-side mock projects demonstrating strong coding and design system principles.",
-    ],
+    title: "Bachelor of Computer Applications (BCA)",
+    organization: "Syed Ammal Arts and Science College",
+    period: "2021 — 2024",
+    meta: "Ramanathapuram, Tamil Nadu",
     icon: <GraduationCap size={15} />,
   },
   {
-    role: "Higher Secondary Course (H.S.C.)",
-    company: "Raja Matriculation Higher Secondary School",
-    duration: "2019 – 2021",
-    description: [
-      "Focused on advanced secondary coursework including computer science concepts, mathematics, and science.",
-      "Developed logic-building and algorithms foundations through school-level programming modules.",
-    ],
-    icon: <BookOpen size={15} />,
-  },
-  {
-    role: "Secondary School Leaving Certificate (S.S.L.C.)",
-    company: "Raja Matriculation Higher Secondary School",
-    duration: "2017 – 2019",
-    description: [
-      "Completed standard secondary education coursework with high proficiency in mathematics and science.",
-    ],
-    icon: <Award size={15} />,
+    title: "Higher Secondary Certificate (HSC)",
+    organization: "Raja Matriculation Higher Secondary School",
+    period: "2019 — 2021",
+    meta: "Ramanathapuram",
+    icon: <Layers3 size={15} />,
   },
 ];
 
 export default function Experience() {
   return (
-    <section
-      id="experience"
-      className="relative py-24 bg-neutral-50 dark:bg-dark-bg/40 border-y border-neutral-200/50 dark:border-neutral-900/60"
-    >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="bg-[#FAFAFA] py-24 dark:bg-[#030712]">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          eyebrow="Experience & Education"
+          title="Real project delivery and a formal academic foundation."
+          description="The site now reflects the exact career story from your resume: a client project, a BCA degree, and technical work aligned with the CV."
+        />
 
-        {/* Section Header */}
-        <div className="max-w-2xl mb-14">
-          <motion.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="inline-block text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-3"
-          >
-            My Journey
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.05 }}
-            className="text-3xl sm:text-4xl font-bold text-neutral-900 dark:text-white"
-          >
-            Experience & Education
-          </motion.h2>
-        </div>
-
-        {/* Timeline */}
-        <div className="relative border-l-2 border-neutral-200 dark:border-neutral-800 ml-4 sm:ml-5 space-y-10">
-          {experienceData.map((item, index) => (
-            <div key={item.role} className="relative pl-8 sm:pl-10">
-
-              {/* Timeline dot */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.07 }}
-                className="absolute -left-[17px] top-2 w-7 h-7 rounded-full bg-white dark:bg-neutral-900 border-2 border-indigo-500 dark:border-indigo-500 flex items-center justify-center text-indigo-600 dark:text-indigo-400"
-              >
-                {item.icon}
-              </motion.div>
-
-              {/* Card */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="p-5 sm:p-6 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800"
-              >
-                {/* Meta */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3">
-                  <div>
-                    <h3 className="text-sm font-semibold text-neutral-900 dark:text-white">
-                      {item.role}
-                    </h3>
-                    <span className="text-xs font-medium text-indigo-600 dark:text-indigo-400">
-                      {item.company}
-                    </span>
+        <div className="space-y-8">
+          {experience.map((item, index) => (
+            <motion.article
+              key={item.title}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: 0.04 * index, ease: "easeOut" }}
+              className="rounded-[2rem] border border-[#E5E7EB] bg-white p-6 shadow-sm dark:border-[#1F2937] dark:bg-[#0F172A] md:p-8"
+            >
+              <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                <div className="flex gap-3">
+                  <div className="mt-1 rounded-2xl bg-[#111827] p-2.5 text-white dark:bg-white dark:text-[#111827]">
+                    {item.icon}
                   </div>
-                  <span className="text-xs font-medium text-neutral-400 dark:text-neutral-500 bg-neutral-100 dark:bg-neutral-800 px-2.5 py-0.5 rounded-full w-fit shrink-0">
-                    {item.duration}
-                  </span>
+                  <div>
+                    <p className="text-lg font-semibold text-[#111827] dark:text-[#F9FAFB]">{item.title}</p>
+                    <p className="mt-2 text-sm leading-7 text-[#6B7280]">{item.summary}</p>
+                  </div>
                 </div>
+                <div className="rounded-full border border-[#E5E7EB] px-3 py-1.5 text-sm font-medium text-[#6B7280] dark:border-[#1F2937]">
+                  {item.period}
+                </div>
+              </div>
 
-                {/* Bullets */}
-                <ul className="space-y-2">
-                  {item.description.map((bullet, i) => (
-                    <li
-                      key={i}
-                      className="text-xs text-neutral-500 dark:text-neutral-400 flex items-start gap-2 leading-relaxed"
-                    >
-                      <span className="mt-1.5 w-1 h-1 rounded-full bg-indigo-400 shrink-0" />
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-            </div>
+              <div className="mt-6 grid gap-4 lg:grid-cols-[1fr_0.75fr]">
+                <div>
+                  <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#111827] dark:text-[#F9FAFB]">
+                    <Sparkles size={13} className="text-[#2563EB]" />
+                    Project details
+                  </div>
+                  <ul className="mt-3 space-y-2">
+                    {item.achievements.map((achievement) => (
+                      <li key={achievement} className="flex gap-2 text-sm leading-7 text-[#6B7280]">
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#2563EB]" />
+                        <span>{achievement}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="rounded-[1.5rem] border border-[#E5E7EB] bg-[#FAFAFA] p-4 dark:border-[#1F2937] dark:bg-[#030712]">
+                  <p className="text-sm font-semibold text-[#111827] dark:text-[#F9FAFB]">Technologies used</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {item.stack.map((tech) => (
+                      <span key={tech} className="rounded-full border border-[#E5E7EB] bg-white px-3 py-1.5 text-sm font-medium text-[#111827] dark:border-[#1F2937] dark:bg-[#0F172A] dark:text-[#F9FAFB]">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.article>
           ))}
-        </div>
 
+          <div className="grid gap-5 lg:grid-cols-2">
+            {education.map((item, index) => (
+              <motion.article
+                key={item.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.4, delay: 0.04 * index, ease: "easeOut" }}
+                className="rounded-[2rem] border border-[#E5E7EB] bg-white p-6 shadow-sm dark:border-[#1F2937] dark:bg-[#0F172A]"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="rounded-2xl bg-[#111827] p-2.5 text-white dark:bg-white dark:text-[#111827]">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <p className="text-lg font-semibold text-[#111827] dark:text-[#F9FAFB]">{item.title}</p>
+                    <p className="mt-1 text-sm text-[#6B7280]">{item.organization}</p>
+                  </div>
+                </div>
+                <div className="mt-4 flex items-center justify-between rounded-full border border-[#E5E7EB] bg-[#FAFAFA] px-4 py-2 text-sm font-medium text-[#6B7280] dark:border-[#1F2937] dark:bg-[#030712]">
+                  <span>{item.period}</span>
+                  <span>{item.meta}</span>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
