@@ -1,81 +1,94 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { GraduationCap, Sparkles } from "lucide-react";
-import SectionHeading from "@/components/ui/SectionHeading";
-
-const facts = [
-  { label: "Languages", value: "Tamil (Native) | English (Conversational)" },
-  { label: "Education", value: "BCA (2024)" },
-  { label: "Location", value: "Ramanathapuram, Tamil Nadu" },
-];
-
-const education = [
-  {
-    title: "Bachelor of Computer Applications (BCA)",
-    organization: "Syed Ammal Arts and Science College",
-    period: "2021 — 2024",
-    location: "Ramanathapuram, Tamil Nadu",
-  },
-  {
-    title: "Higher Secondary Certificate (HSC)",
-    organization: "Raja Matriculation Higher Secondary School",
-    period: "2019 — 2021",
-    location: "Ramanathapuram",
-  },
-];
+import { motion, Variants } from "framer-motion";
 
 export default function About() {
+  const principles = [
+    "Clean Architecture",
+    "Performance First",
+    "Accessibility",
+    "Responsive Design",
+    "Continuous Learning"
+  ];
+
+  const fadeUpVariants: Variants = {
+    hidden: { opacity: 0, y: 12 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { 
+        duration: 0.5, 
+        ease: [0.215, 0.610, 0.355, 1.000]
+      }
+    }
+  };
+
   return (
-    <section id="about" className="bg-white py-24 dark:bg-[#030712]">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="Professional Summary"
-          title="Frontend Developer with a BCA degree and production project delivery."
-          description="Frontend Developer with a BCA degree (2024) and hands-on experience building and deploying production-ready frontend solutions. Proficient in React.js, Next.js, TypeScript, and Tailwind CSS. Successfully delivered a live corporate website for a Dubai-based client, implementing secure API integration and automated email workflows. Seeking to contribute to a collaborative engineering team while building modern, scalable, and user-focused frontend applications."
-        />
+    /* Consistent section padding across all sections */
+    <section id="about" className="bg-white pt-8 pb-8 text-slate-950 sm:pt-12 sm:pb-12">
+      {/* Outer wrapper keeping alignment completely consistent across your portfolio */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-left">
+        
+        {/* Section Header */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-120px" }}
+          variants={fadeUpVariants}
+          className="space-y-4 max-w-7xl"
+        >
+          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-sky-600 font-mono">
+            ABOUT
+          </p>
+          <h2 className="text-4xl sm:text-5xl lg:text-5xl font-semibold tracking-[-0.03em] leading-tight text-slate-900 max-w-7xl">
+            I build frontend experiences that are clean, intuitive, and reliable.
+          </h2>
+        </motion.div>
 
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.45, ease: "easeOut" }}
-            className="rounded-[2rem] border border-[#E5E7EB] bg-[#FAFAFA] p-7 shadow-sm dark:border-[#1F2937] dark:bg-[#0F172A]"
-          >
-            <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.24em] text-[#2563EB]">
-              <Sparkles size={14} />
-              Quick facts
-            </div>
-            <ul className="mt-5 space-y-3 text-sm leading-7 text-[#6B7280]">
-              {facts.map((fact) => (
-                <li key={fact.label} className="flex gap-3">
-                  <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#2563EB]" />
-                  <div>
-                    <p className="font-semibold text-[#111827] dark:text-[#F9FAFB]">{fact.label}</p>
-                    <p>{fact.value}</p>
-                  </div>
-                </li>
+        {/* Spacing: mt-8 for heading-to-content gap, space-y-6 for paragraph spacing */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ staggerChildren: 0.08 }}
+          className="mt-8 max-w-7xl space-y-6 text-base sm:text-lg leading-8 text-slate-600"
+        >
+          <motion.p variants={fadeUpVariants}>
+            I&apos;m a BCA graduate passionate about building web applications with a strong focus on usability, performance, and maintainable code. I enjoy turning ideas into polished digital experiences that solve real-world problems.
+          </motion.p>
+          
+          <motion.p variants={fadeUpVariants}>
+            Recently, I delivered a live corporate website for a Dubai-based client, gaining hands-on experience across the full development lifecycle—from user interface implementation and secure API integration to deployment and post-launch support.
+          </motion.p>
+          
+          <motion.p variants={fadeUpVariants}>
+            I&apos;m currently seeking an opportunity where I can contribute to meaningful products, learn from experienced engineers, and continue growing as a Frontend Developer.
+          </motion.p>
+
+          {/* Minimalist Divider Line spanning across the layout width */}
+          <motion.div variants={fadeUpVariants} className="pt-4">
+            <div className="h-px bg-slate-100 w-full" />
+          </motion.div>
+
+          {/* Engineering Principles Cluster */}
+          <motion.div variants={fadeUpVariants} className="pt-4 space-y-3">
+            <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-slate-400">
+              Engineering Principles
+            </h3>
+            
+            <div className="flex flex-wrap gap-2 pt-1">
+              {principles.map((principle) => (
+                <span
+                  key={principle}
+                  className="inline-flex items-center rounded-lg border border-slate-200/80 bg-white px-3 py-1.5 text-xs font-medium text-slate-800 transition-colors duration-150 hover:border-slate-300"
+                >
+                  {principle}
+                </span>
               ))}
-            </ul>
+            </div>
           </motion.div>
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.45, delay: 0.06, ease: "easeOut" }}
-            className="space-y-4"
-          >
-            {education.map((item) => (
-              <div key={item.title} className="rounded-[1.5rem] border border-[#E5E7EB] bg-white p-5 dark:border-[#1F2937] dark:bg-[#0F172A]">
-                <p className="text-sm font-semibold text-[#111827] dark:text-[#F9FAFB]">{item.title}</p>
-                <p className="mt-2 text-sm leading-7 text-[#6B7280]">{item.organization}</p>
-                <p className="mt-1 text-sm text-[#6B7280]">{item.period} · {item.location}</p>
-              </div>
-            ))}
-          </motion.div>
-        </div>
       </div>
     </section>
   );

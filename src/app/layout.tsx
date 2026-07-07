@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "../context/ThemeContext";
 import "./globals.css";
 
 const inter = Inter({
-  variable: "--font-geist-sans",
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+  variable: "--font-mono",
   subsets: ["latin"],
 });
 
-// Premium SEO Metadata
 export const metadata: Metadata = {
   title: "Mohamed Noorus Salam | Frontend Developer Portfolio",
   description: "Portfolio of Mohamed Noorus Salam, a Frontend Developer specializing in React.js, Next.js, TypeScript, and Tailwind CSS. Crafting responsive and user-focused web solutions.",
@@ -29,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "Mohamed Noorus Salam Portfolio",
     images: [
       {
-        url: "/project-corporate.png",
+        url: "/project-corp.png", // FIXED: Updated name to match your active project image path cleanly
         width: 1200,
         height: 630,
         alt: "Mohamed Noorus Salam Portfolio Preview",
@@ -40,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Mohamed Noorus Salam | Frontend Developer Portfolio",
     description: "Portfolio of Mohamed Noorus Salam, showcasing responsive web applications.",
-    images: ["/project-corporate.png"],
+    images: ["/project-corp.png"], // FIXED: Updated name to match project image asset path
     creator: "@noorussalam",
   },
   metadataBase: new URL("https://noorussalam.dev"),
@@ -51,17 +49,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Structured Data (JSON-LD) for SEO
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Mohamed Noorus Salam",
-    "jobTitle": "Frontend Developer",
-    "url": "https://noorussalam.dev",
-    "sameAs": [
-      "https://github.com/noorussalam29"
-    ],
-    "knowsAbout": [
+    name: "Mohamed Noorus Salam",
+    jobTitle: "Frontend Developer",
+    url: "https://noorussalam.dev",
+    sameAs: ["https://github.com/noorussalam29"],
+    knowsAbout: [
       "React.js",
       "Next.js",
       "TypeScript",
@@ -70,27 +65,20 @@ export default function RootLayout({
       "HTML5",
       "CSS3",
       "Git",
-      "GitHub"
+      "GitHub",
+      "Cloudflare",
+      "Vercel",
     ],
-    "description": "Frontend Developer specializing in React.js, Next.js, TypeScript, and Tailwind CSS."
+    description: "Frontend Developer specializing in React.js, Next.js, TypeScript, and Tailwind CSS.",
   };
 
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={`${inter.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
-      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300">
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+      <body className="min-h-full flex flex-col bg-white text-slate-950 selection:bg-sky-50 selection:text-sky-900">
+        {children}
       </body>
     </html>
   );

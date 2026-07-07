@@ -1,89 +1,116 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight, Download, Mail, MapPin } from "lucide-react";
 import { Github, Linkedin } from "@/components/ui/Icons";
-
-const quickStats = [
-  { label: "Stack", value: "React · Next.js · TypeScript · Tailwind CSS" },
-  { label: "Location", value: "Ramanathapuram, Tamil Nadu" },
-  { label: "Contact", value: "+91 75981 08153" },
-];
 
 export default function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden bg-[#FAFAFA] py-24 pt-28 sm:py-28 lg:py-32 dark:bg-[#030712]">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="flex flex-col justify-center"
-        >
-          <p className="text-sm font-semibold uppercase tracking-[0.32em] text-[#2563EB]">Frontend Developer</p>
-          <h1 className="mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] text-[#111827] sm:text-5xl lg:text-6xl dark:text-[#F9FAFB]">
-            Mohamed Noorus Salam
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg leading-8 text-[#6B7280]">
-            Frontend Developer with a BCA degree (2024) and hands-on experience building and deploying production-ready frontend solutions. Proficient in React.js, Next.js, TypeScript, and Tailwind CSS.
-          </p>
-
-          <div className="mt-8 space-y-4 rounded-[2rem] border border-[#E5E7EB] bg-white p-6 shadow-sm dark:border-[#1F2937] dark:bg-[#0F172A]">
-            <div className="flex items-center gap-3 text-sm text-[#6B7280] dark:text-[#94A3B8]">
-              <Mail size={18} className="text-[#2563EB]" />
-              <span>mdnoorussalam3@gmail.com</span>
+    <section id="home" className="bg-white text-slate-950">
+      {/* 
+        Spacing Fix: Cleaned up vertical paddings. 
+        Low mobile padding ensures the 'About' or 'Projects' section below peeks through perfectly.
+      */}
+      <div className="mx-auto max-w-7xl px-6 pt-20 pb-4 lg:px-8 lg:pt-24 lg:pb-6">
+        
+        {/* Main Grid Layout */}
+        <div className="grid grid-cols-1 gap-y-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16 lg:items-center">
+          
+          {/* 1. Header Block */}
+          <div className="space-y-3">
+            {/* Availability Status Badge */}
+            <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-xs font-medium text-emerald-700 w-fit">
+              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+              Available for Frontend Developer Roles
             </div>
-            <div className="flex items-center gap-3 text-sm text-[#6B7280] dark:text-[#94A3B8]">
-              <MapPin size={18} className="text-[#2563EB]" />
-              <span>Ramanathapuram, Tamil Nadu</span>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              <a href="https://github.com/noorussalam29" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-[#E5E7EB] bg-[#FAFAFA] px-4 py-3 text-sm font-medium text-[#111827] transition hover:border-[#2563EB] dark:border-[#1F2937] dark:bg-[#030712] dark:text-[#F9FAFB]">
-                <Github size={16} />
-                GitHub
-              </a>
-              <a href="https://linkedin.com/in/noorus" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-[#E5E7EB] bg-[#FAFAFA] px-4 py-3 text-sm font-medium text-[#111827] transition hover:border-[#2563EB] dark:border-[#1F2937] dark:bg-[#030712] dark:text-[#F9FAFB]">
-                <Linkedin size={16} />
-                LinkedIn
-              </a>
+            
+            <div>
+              <p className="text-xs font-mono uppercase tracking-[0.32em] text-sky-600 font-semibold">
+                Frontend Developer
+              </p>
+              <h1 className="mt-2 max-w-full text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+                Mohamed Noorus Salam
+              </h1>
             </div>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="#projects" className="inline-flex items-center gap-2 rounded-full bg-[#111827] px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-[#2563EB]">
-              View projects
-              <ArrowRight size={16} />
-            </Link>
-            <a href="/mohamed_noorus_salam_frontend_developer.pdf" download className="inline-flex items-center gap-2 rounded-full border border-[#E5E7EB] bg-white px-5 py-3 text-sm font-medium text-[#111827] transition-colors hover:border-[#2563EB] hover:text-[#2563EB] dark:border-[#1F2937] dark:bg-[#0F172A] dark:text-[#F9FAFB]">
-              <Download size={16} />
-              Download resume
-            </a>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 16 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.55, ease: "easeOut", delay: 0.08 }}
-          className="flex flex-col gap-5"
-        >
-          <div className="overflow-hidden rounded-[2rem] border border-[#E5E7EB] bg-white p-3 shadow-[0_20px_60px_-25px_rgba(17,24,39,0.18)] dark:border-[#1F2937] dark:bg-[#0F172A]">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem]">
-              <Image src="/profile.jpeg" alt="Mohamed Noorus Salam" fill priority sizes="(max-width: 768px) 100vw, 40vw" className="object-cover" />
-            </div>
-          </div>
-
-          <div className="grid gap-3 sm:grid-cols-3">
-            {quickStats.map((stat) => (
-              <div key={stat.label} className="rounded-2xl border border-[#E5E7EB] bg-white p-4 dark:border-[#1F2937] dark:bg-[#0F172A]">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#6B7280]">{stat.label}</p>
-                <p className="mt-1 text-sm font-semibold text-[#111827] dark:text-[#F9FAFB]">{stat.value}</p>
+          {/* 
+            2. DESKTOP-ONLY CORE TECHNOLOGIES 
+            Using hidden lg:block ensures this is 100% removed from mobile, 
+            but preserves the gorgeous, empty-space-filling layout on desktop.
+          */}
+          <div className="hidden lg:block lg:row-span-2 w-full max-w-sm mx-auto lg:max-w-none my-4 lg:my-0">
+            <div className="rounded-2xl border border-slate-200 bg-slate-50/50 p-5 sm:p-6 shadow-sm">
+              <p className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-5">
+                Core Technologies
+              </p>
+              
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { name: "React.js", level: "Frontend Core" },
+                  { name: "Next.js", level: "SSR & Routing" },
+                  { name: "TypeScript", level: "Type Safety" },
+                  { name: "Tailwind CSS", level: "Utility Styling" },
+                  { name: "JavaScript", level: "ES6+ Architecture" },
+                  { name: "Git / GitHub", level: "Version Control" },
+                ].map((tech) => (
+                  <div 
+                    key={tech.name} 
+                    className="rounded-xl border border-slate-200/60 bg-white p-3.5 transition duration-150 hover:border-sky-300 hover:shadow-sm"
+                  >
+                    <p className="text-sm font-semibold text-slate-800 tracking-tight whitespace-nowrap">{tech.name}</p>
+                    <p className="text-[11px] text-slate-400 mt-0.5 leading-normal">{tech.level}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-        </motion.div>
+
+          {/* 3. Description & Links Block */}
+          <div className="space-y-8 lg:-mt-6">
+            <div className="space-y-4">
+              <p className="text-lg leading-relaxed text-slate-600 sm:text-xl sm:leading-8">
+                I build modern, responsive frontend applications using React, Next.js, TypeScript, and Tailwind CSS. I enjoy transforming UI designs into fast, accessible, and production-ready experiences.
+              </p>
+              
+              {/* Info Tags */}
+              <div className="flex flex-col gap-1.5 text-sm font-medium text-slate-500 sm:flex-row sm:items-center sm:gap-4">
+                <p className="flex items-center gap-1.5">
+                  <span>📍</span> Ramanathapuram, Tamil Nadu
+                </p>
+                <span className="hidden h-1 w-1 rounded-full bg-slate-300 sm:block" />
+                <p className="flex items-center gap-1.5">
+                  <span>🎓</span> BCA Graduate • Immediate Joiner
+                </p>
+              </div>
+            </div>
+
+            {/* Call To Actions & Socials (Follows immediately on mobile!) */}
+            <div className="space-y-8">
+              <div className="flex flex-wrap gap-3">
+                <Link href="#projects" className="inline-flex items-center justify-center rounded-lg bg-slate-950 px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-slate-800 shadow-sm">
+                  View Projects
+                </Link>
+                <a href="/mohamed_noorus_salam_frontend_developer.pdf" download className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-slate-800 transition hover:border-slate-300 hover:text-slate-950">
+                  Download Resume
+                </a>
+              </div>
+
+              {/* Social Icons */}
+              <div className="flex items-center gap-5 text-slate-400">
+                <a href="https://github.com/noorussalam29" target="_blank" rel="noreferrer" className="transition-colors duration-150 hover:text-slate-950">
+                  <span className="sr-only">GitHub</span>
+                  <Github />
+                </a>
+                <a href="https://linkedin.com/in/noorus" target="_blank" rel="noreferrer" className="transition-colors duration-150 hover:text-slate-950">
+                  <span className="sr-only">LinkedIn</span>
+                  <Linkedin />
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </section>
   );

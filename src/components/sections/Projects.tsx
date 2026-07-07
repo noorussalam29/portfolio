@@ -1,95 +1,139 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { ArrowUpRight, Code2, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { Github } from "@/components/ui/Icons";
 
 const project = {
-  title: "ADCS – Active Dynamic Cleaning Services",
-  subtitle: "Corporate Website",
-  year: "2026",
-  description:
-    "Designed and developed a fully responsive corporate website for a Dubai-based cleaning services client, delivering a polished business experience with secure booking workflows and strong frontend performance.",
-  image: "/project-corporate.png",
-  stack: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "Resend API", "Cloudflare"],
-  points: [
-    "Built a secure server-side contact and booking API with strict input validation and HTML escaping to prevent XSS and injection attacks.",
-    "Engineered an automated dual-email notification system using Resend API, instantly confirming bookings to both customer and admin.",
-    "Managed end-to-end project delivery using Git/GitHub, deployment, and DNS configuration on Cloudflare.",
-    "Delivered a performant, mobile-first UI with optimized loading speed and clean component architecture.",
+  title: "ADCS — Active Dynamic Cleaning Services",
+  period: "2026",
+  hero: "/project-corp.png",
+  description: "Designed and deployed a live website for a Dubai-based cleaning services company, enabling customers to submit service bookings through a secure online system.",
+  details: [
+    "Developed a responsive frontend using Next.js, React, TypeScript, and Tailwind CSS.",
+    "Built secure server-side booking APIs with input validation and XSS protection.",
+    "Integrated the Resend API to automate booking confirmation emails.",
+    "Configured deployment, DNS, SSL, and caching using Cloudflare.",
+    "Implemented SEO metadata and optimized the application for performance.",
   ],
+  stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Resend API", "Cloudflare"],
   liveUrl: "https://www.activedynamicdubai.com",
-  githubUrl: "https://github.com/noorussalam29/active-dynamic",
+  githubUrl: "https://github.com/noorussalam29/active-dynamic-cleaning",
 };
 
 export default function Projects() {
   return (
-    <section id="projects" className="bg-white py-24 dark:bg-[#030712]">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    /* Consistent section padding across all sections */
+    <section id="projects" className="bg-white pt-8 pb-8 text-slate-950 sm:pt-12 sm:pb-12">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-left">
+        
+        {/* FIXED: Updated title and description to match copy instructions */}
         <SectionHeading
           eyebrow="Projects"
-          title="Featured project from real client work."
-          description="This project highlights the same production-level delivery and secure frontend implementation described in your resume."
+          align="left"
+          title="Featured Client Project."
+          description="A production-ready corporate website successfully delivered for a Dubai-based client."
         />
 
-        <motion.article
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.45, ease: "easeOut" }}
-          className="grid gap-6 overflow-hidden rounded-[2rem] border border-[#E5E7EB] bg-[#FAFAFA] p-5 shadow-sm md:p-7 dark:border-[#1F2937] dark:bg-[#0F172A] lg:grid-cols-[0.95fr_1.05fr]"
-        >
-          <div className="overflow-hidden rounded-[1.5rem] border border-[#E5E7EB] bg-white dark:border-[#1F2937] dark:bg-[#030712]">
-            <div className="relative aspect-[16/10]">
-              <Image src={project.image} alt={project.title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+        {/* Spacing: mt-8 for heading-to-content gap */}
+        <div className="mt-8 grid grid-cols-1 gap-8 sm:gap-10 lg:gap-12 lg:grid-cols-12 lg:items-start">
+          
+          {/* Left Column: Mobile-First Image Container */}
+          <div className="w-full lg:col-span-5 lg:sticky lg:top-24">
+            <div className="w-full overflow-hidden rounded-2xl border border-slate-100 bg-slate-50 p-2 shadow-sm transition-colors duration-200 hover:border-slate-200">
+              <div className="relative w-full max-w-full overflow-hidden rounded-xl bg-slate-100 aspect-[4/3] sm:aspect-[16/10]">
+                <Image 
+                  src={project.hero} 
+                  alt="ADCS corporate infrastructure layout overview" 
+                  fill 
+                  className="object-cover transition-transform duration-500 ease-out hover:scale-[1.02]" 
+                  sizes="(max-width: 1024px) 100vw, 40vw" 
+                  priority
+                />
+              </div>
             </div>
           </div>
 
-          <div className="flex flex-col justify-between">
+          {/* Right Column: Deep Technical Narrative */}
+          <div className="space-y-8 lg:col-span-7 lg:pl-4">
             <div>
-              <div className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.24em] text-[#2563EB]">
-                <Code2 size={14} />
-                {project.subtitle}
+              <p className="text-xs font-semibold uppercase tracking-[0.32em] text-sky-600 font-mono">
+                Production Client Case
+              </p>
+              
+              <div className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-2">
+                <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900">
+                  {project.title}
+                </h3>
+                <span className="font-mono text-xs tracking-wider text-slate-400">
+                  [{project.period}]
+                </span>
               </div>
-              <div className="mt-3 flex items-center gap-3 text-sm text-[#6B7280]">
-                <span className="rounded-full border border-[#E5E7EB] px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-[#111827] dark:border-[#1F2937] dark:text-[#F9FAFB]">{project.year}</span>
-              </div>
-              <h3 className="mt-4 text-2xl font-semibold text-[#111827] dark:text-[#F9FAFB]">{project.title}</h3>
-              <p className="mt-4 text-base leading-8 text-[#6B7280]">{project.description}</p>
+              
+              <p className="mt-4 text-base sm:text-lg leading-8 text-slate-600">
+                {project.description}
+              </p>
+            </div>
 
-              <div className="mt-5 flex flex-wrap gap-2">
+            {/* Implementation Details */}
+            <div className="space-y-4">
+              <h4 className="text-xs font-mono uppercase tracking-[0.2em] text-slate-400">
+                Core Contributions
+              </h4>
+              <ul className="space-y-3.5 text-slate-600 text-sm sm:text-base leading-8">
+                {project.details.map((detail) => (
+                  <li key={detail} className="flex items-start gap-3">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-500" aria-hidden="true" />
+                    <span>{detail}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Technologies Applied */}
+            <div className="space-y-3">
+              <h4 className="text-xs font-mono uppercase tracking-[0.2em] text-slate-400">
+                Technologies Applied
+              </h4>
+              <div className="flex flex-wrap gap-2">
                 {project.stack.map((tech) => (
-                  <span key={tech} className="rounded-full border border-[#E5E7EB] bg-white px-3 py-1.5 text-sm font-medium text-[#111827] dark:border-[#1F2937] dark:bg-[#030712] dark:text-[#F9FAFB]">
+                  <span 
+                    key={tech} 
+                    className="inline-flex items-center rounded-lg border border-slate-200/60 bg-white px-2.5 py-1 text-xs font-medium text-slate-800"
+                  >
                     {tech}
                   </span>
                 ))}
               </div>
-
-              <div className="mt-6 space-y-3">
-                {project.points.map((point) => (
-                  <p key={point} className="text-sm leading-7 text-[#6B7280]">• {point}</p>
-                ))}
-              </div>
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a href={project.liveUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[#111827] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#2563EB]">
-                Live demo
-                <ExternalLink size={14} />
+            {/* Action Connections */}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-slate-950 px-4 py-2.5 text-xs font-semibold text-white transition-colors duration-150 hover:bg-slate-800 shadow-sm"
+              >
+                <span>Visit Live Site</span>
+                <ExternalLink size={14} className="opacity-80" />
               </a>
-              <a href={project.githubUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-[#E5E7EB] bg-white px-4 py-2.5 text-sm font-medium text-[#111827] transition-colors hover:border-[#2563EB] hover:text-[#2563EB] dark:border-[#1F2937] dark:bg-[#030712] dark:text-[#F9FAFB]">
-                <Github size={14} />
-                GitHub
-              </a>
-              <a href="#contact" className="inline-flex items-center gap-2 rounded-full border border-[#E5E7EB] bg-transparent px-4 py-2.5 text-sm font-medium text-[#111827] transition-colors hover:border-[#2563EB] hover:text-[#2563EB] dark:border-[#1F2937] dark:text-[#F9FAFB]">
-                Contact
-                <ArrowUpRight size={14} />
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-xs font-semibold text-slate-800 transition-colors duration-150 hover:border-slate-300 hover:text-slate-950"
+              >
+                <Github />
+                <span>Source Repository</span>
               </a>
             </div>
+
           </div>
-        </motion.article>
+
+        </div>
+
       </div>
     </section>
   );
