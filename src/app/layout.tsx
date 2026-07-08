@@ -21,13 +21,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://noorussalam.dev",
+    url: "https://noorussalam-portfolio.vercel.app", // FIXED: Points to active production deployment
     title: "Mohamed Noorus Salam | Frontend Developer Portfolio",
     description: "Portfolio of Mohamed Noorus Salam, showcasing responsive web applications.",
     siteName: "Mohamed Noorus Salam Portfolio",
     images: [
       {
-        url: "/project-corp.png", // FIXED: Updated name to match your active project image path cleanly
+        url: "/project-corp.png",
         width: 1200,
         height: 630,
         alt: "Mohamed Noorus Salam Portfolio Preview",
@@ -38,10 +38,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Mohamed Noorus Salam | Frontend Developer Portfolio",
     description: "Portfolio of Mohamed Noorus Salam, showcasing responsive web applications.",
-    images: ["/project-corp.png"], // FIXED: Updated name to match project image asset path
+    images: ["/project-corp.png"],
     creator: "@noorussalam",
   },
-  metadataBase: new URL("https://noorussalam.dev"),
+  metadataBase: new URL("https://noorussalam-portfolio.vercel.app"), // FIXED: Absolute routing base fallback resolved
 };
 
 export default function RootLayout({
@@ -54,8 +54,11 @@ export default function RootLayout({
     "@type": "Person",
     name: "Mohamed Noorus Salam",
     jobTitle: "Frontend Developer",
-    url: "https://noorussalam.dev",
-    sameAs: ["https://github.com/noorussalam29"],
+    url: "https://noorussalam-portfolio.vercel.app", // FIXED: Match primary canonical mapping
+    sameAs: [
+      "https://github.com/noorussalam29",
+      "https://www.linkedin.com/in/mohamed-noorus-salam-0186632b0",
+    ],
     knowsAbout: [
       "React.js",
       "Next.js",

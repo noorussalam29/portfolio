@@ -20,14 +20,18 @@ export default function Hero() {
             {/* Availability Status Badge */}
             <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-xs font-medium text-emerald-700 w-fit">
               <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-              Available for Frontend Developer Roles
+              Open to Frontend Developer Opportunities
             </div>
             
             <div>
               <p className="text-xs font-mono uppercase tracking-[0.32em] text-sky-600 font-semibold">
                 Frontend Developer
               </p>
-              <h1 className="mt-2 max-w-full text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+              {/* 
+                FIXED: Added whitespace-nowrap and dynamically scaled font sizes 
+                (text-2xl on modern base screens up to text-5xl on desktop) to keep it perfectly inline.
+              */}
+              <h1 className="mt-2 text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 whitespace-nowrap">
                 Mohamed Noorus Salam
               </h1>
             </div>
@@ -69,13 +73,13 @@ export default function Hero() {
           <div className="space-y-8 lg:-mt-6">
             <div className="space-y-4">
               <p className="text-lg leading-relaxed text-slate-600 sm:text-xl sm:leading-8">
-                I build modern, responsive frontend applications using React, Next.js, TypeScript, and Tailwind CSS. I enjoy transforming UI designs into fast, accessible, and production-ready experiences.
+                I build fast, user-focused web applications using React, Next.js, TypeScript, and Tailwind CSS. I enjoy transforming UI designs into clean, accessible, and polished web experiences.
               </p>
               
               {/* Info Tags */}
               <div className="flex flex-col gap-1.5 text-sm font-medium text-slate-500 sm:flex-row sm:items-center sm:gap-4">
                 <p className="flex items-center gap-1.5">
-                  <span>📍</span> Ramanathapuram, Tamil Nadu
+                  <span>📍</span> Chennai, Tamil Nadu
                 </p>
                 <span className="hidden h-1 w-1 rounded-full bg-slate-300 sm:block" />
                 <p className="flex items-center gap-1.5">
@@ -90,7 +94,7 @@ export default function Hero() {
                 <Link href="#projects" className="inline-flex items-center justify-center rounded-lg bg-slate-950 px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-slate-800 shadow-sm">
                   View Projects
                 </Link>
-                <a href="/mohamed_noorus_salam_frontend_developer.pdf" download className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-slate-800 transition hover:border-slate-300 hover:text-slate-950">
+                <a href="Mohamed_Noorus_Salam_Frontend_Developer.pdf" download className="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-white px-5 py-2.5 text-xs font-semibold text-slate-800 transition hover:border-slate-300 hover:text-slate-950">
                   Download Resume
                 </a>
               </div>
@@ -101,7 +105,7 @@ export default function Hero() {
                   <span className="sr-only">GitHub</span>
                   <Github />
                 </a>
-                <a href="https://linkedin.com/in/noorus" target="_blank" rel="noreferrer" className="transition-colors duration-150 hover:text-slate-950">
+                <a href="https://www.linkedin.com/in/mohamed-noorus-salam-0186632b0" target="_blank" rel="noreferrer" className="transition-colors duration-150 hover:text-slate-950">
                   <span className="sr-only">LinkedIn</span>
                   <Linkedin />
                 </a>

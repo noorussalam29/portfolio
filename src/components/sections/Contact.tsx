@@ -8,7 +8,7 @@ const contactItems = [
   { label: "Email", value: "mdnoorussalam3@gmail.com", href: "mailto:mdnoorussalam3@gmail.com", icon: <Mail size={16} /> },
   { label: "Phone", value: "+91 7598108153", href: "tel:+917598108153", icon: <Phone size={16} /> },
   { label: "GitHub", value: "github.com/noorussalam29", href: "https://github.com/noorussalam29", icon: <Github size={16} /> },
-  { label: "LinkedIn", value: "linkedin.com/in/noorus", href: "https://linkedin.com/in/noorus", icon: <Linkedin size={16} /> },
+  { label: "LinkedIn", value: "linkedin.com/in/mohamed-noorus-salam", href: "https://www.linkedin.com/in/mohamed-noorus-salam-0186632b0", icon: <Linkedin size={16} /> },
 ];
 
 export default function Contact() {
